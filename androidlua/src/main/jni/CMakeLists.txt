@@ -9,78 +9,57 @@ cmake_minimum_required(VERSION 3.4.1)
 # define multiple libraries by adding multiple add.library() commands,
 # and CMake builds them for you. When you build your app, Gradle
 # automatically packages shared libraries with your APK.
-#set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -D__STDC_FORMAT_MACROS -D__DEBUG__ -std=gnu99 -Wno-pmf-conversions -fno-rtti -fno-exceptions -Dtypeof=decltype)
-#set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra -flto=3 -fvisibility=hidden)
-add_library( # Specifies the name of the library.
-             lua
-
-             # Sets the library as a shared library.
-             STATIC
-
-             # Provides a relative path to your source file(s).
-             lua/lapi.c
-             lua/lauxlib.c
-             lua/lbaselib.c
-             lua/lbitlib.c
-             lua/lcode.c
-             lua/lcorolib.c
-             lua/lctype.c
-             lua/ldblib.c
-             lua/ldebug.c
-             lua/ldo.c
-             lua/ldump.c
-             lua/lfunc.c
-             lua/lgc.c
-             lua/linit.c
-             lua/liolib.c
-             lua/llex.c
-             lua/lmathlib.c
-             lua/lmem.c
-             lua/loadlib.c
-             lua/lobject.c
-             lua/lopcodes.c
-             lua/loslib.c
-             lua/lparser.c
-             lua/lstate.c
-             lua/lstring.c
-             lua/lstrlib.c
-             lua/ltable.c
-             lua/ltablib.c
-             lua/ltm.c
-             lua/lundump.c
-             lua/lutf8lib.c
-             lua/lvm.c
-             lua/lzio.c)
-
-target_include_directories(lua PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/lua)
 
 add_library( # Specifies the name of the library.
-             luajava
+        luajava
 
-             # Sets the library as a shared library.
-             SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-             # Provides a relative path to your source file(s).
-             luajava/luajava.c)
+        # Provides a relative path to your source file(s).
+        luajava/luajava.c
+        lua/lapi.c
+        lua/lauxlib.c
+        lua/lbaselib.c
+        lua/lbitlib.c
+        lua/lcode.c
+        lua/lcorolib.c
+        lua/lctype.c
+        lua/ldblib.c
+        lua/ldebug.c
+        lua/ldo.c
+        lua/ldump.c
+        lua/lfunc.c
+        lua/lgc.c
+        lua/linit.c
+        lua/liolib.c
+        lua/llex.c
+        lua/lmathlib.c
+        lua/lmem.c
+        lua/loadlib.c
+        lua/lobject.c
+        lua/lopcodes.c
+        lua/loslib.c
+        lua/lparser.c
+        lua/lstate.c
+        lua/lstring.c
+        lua/lstrlib.c
+        lua/ltable.c
+        lua/ltablib.c
+        lua/ltm.c
+        lua/lundump.c
+        lua/lutf8lib.c
+        lua/lvm.c
+        lua/lzio.c
 
-target_include_directories(luajava PRIVATE
+        )
+
+
+target_include_directories(luajava PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/lua
         ${CMAKE_CURRENT_SOURCE_DIR}/luajava)
-
+message('=======================================================')
+message(${CMAKE_CURRENT_SOURCE_DIR}/lua)
 target_link_libraries(luajava
-        lua
         android
         log)
-
-
-
-#cmake_minimum_required(VERSION 3.4.1)
-#
-#add_library(hi SHARED
-#        Hi.c)
-#
-## Include libraries needed for hello-jni lib
-#target_link_libraries(hi
-#                      android
-#                      log)
