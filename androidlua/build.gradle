@@ -9,6 +9,11 @@ android {
         targetSdkVersion 28
         versionCode 3
         versionName "1.0.3"
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_static'
+            }
+        }
     }
 
     buildTypes {
@@ -18,14 +23,13 @@ android {
         }
     }
 
-    externalNativeBuild {
-        ndkBuild {
-            path 'src/main/jni/Android.mk'
-        }
-    }
-
     lintOptions {
         abortOnError false
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/jni/CMakeLists.txt')
+        }
     }
 }
 
