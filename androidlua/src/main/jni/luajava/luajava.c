@@ -207,7 +207,6 @@ static jclass    java_lang_class      = NULL;
 
 
 /***************************************************************************
-/*
 * $FC pushJavaObject
 *
 * $ED Description

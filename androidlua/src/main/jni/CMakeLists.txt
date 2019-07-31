@@ -10,14 +10,15 @@ cmake_minimum_required(VERSION 3.4.1)
 # and CMake builds them for you. When you build your app, Gradle
 # automatically packages shared libraries with your APK.
 
-project(luajava)
-
 # Add header file include directories
+
+add_definitions()
+
 include_directories(./lua ./luajava)
 add_subdirectory(lua)
 add_subdirectory(luajava)
 
-add_library(luajava)
+add_library(luajava SHARED luajava/luajava.c)
 
 target_link_libraries(
         luajava
