@@ -12,18 +12,5 @@ cmake_minimum_required(VERSION 3.4.1)
 
 # Add header file include directories
 
-add_definitions()
-
-include_directories(./lua ./luajava)
 add_subdirectory(lua)
 add_subdirectory(luajava)
-
-add_library(luajava SHARED luajava/luajava.c)
-
-target_link_libraries(
-        luajava
-        luaj
-        lua
-        android
-        log
-)
